@@ -6,9 +6,8 @@ import {
   deleteItem,
   showHelp,
   calculateAverage,
-  readItemsByActivity,
   actCommand,
-} from "./commands.js";
+} from "./src/commands/index.js";
 
 const rl = readline.createInterface({
   input: process.stdin,
