@@ -1,35 +1,46 @@
 import readline from "readline";
-import { createItem, readItems, updateItem, deleteItem } from "./commands.js";
+import {
+  createItem,
+  readItems,
+  updateItem,
+  deleteItem,
+  showHelp,
+  calculateAverage,
+  readItemsByActivity,
+  actCommand,
+} from "./commands.js";
 
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout,
 });
 
-rl.setPrompt("Enter a command (create, read, update, delete, exit): ");
-rl.prompt();
-
-rl.on("line", (input) => {
-  const [command, ...args] = input.trim().split(" ");
-
+function processCommand(command, args) {
   switch (command) {
     case "create":
-      const [value, desc, ...activityParts] = args;
-      const activity = activityParts.join(" ");
-      createItem(value, desc, activity);
+      const [value, desc, activity] = args;
+      createItem(Number(value), desc, activity);
       break;
     case "read":
-      readItems(args[0]);
+      const range = args[0];
+      readItems(range);
+      break;
+    case "act":
+      actCommand(...args);
+      break;
+    case "avg":
+      calculateAverage();
       break;
     case "update":
-      const [indexToUpdate, newValue, newDesc, ...newActivityParts] = args;
-      const newActivity = newActivityParts.join(" ");
-      const itemIndexToUpdate = parseInt(indexToUpdate, 10);
-      updateItem(itemIndexToUpdate, newValue, newDesc, newActivity);
+      const [index, newValue, newDesc, newActivity] = args;
+      updateItem(Number(index), Number(newValue), newDesc, newActivity);
       break;
     case "delete":
-      const indexToDelete = parseInt(args[0], 10);
-      deleteItem(indexToDelete);
+      const indexToDelete = args[0];
+      deleteItem(Number(indexToDelete));
+      break;
+    case "help":
+      showHelp();
       break;
     case "exit":
       rl.close();
@@ -39,9 +50,14 @@ rl.on("line", (input) => {
   }
 
   rl.prompt();
+}
+
+rl.on("line", (input) => {
+  const [command, ...args] = input.trim().split(" ");
+  processCommand(command, args);
 });
 
-rl.on("close", () => {
-  console.log("Exiting the application.");
-  process.exit(0);
-});
+console.log(
+  'Welcome to the CRUD CLI app! Enter a command (e.g., create, read, update, delete) or type "help" for available commands.'
+);
+rl.prompt();

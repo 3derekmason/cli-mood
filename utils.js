@@ -24,3 +24,13 @@ export function filterItemsByTimeRange(range) {
     return itemDate.isBetween(startDate, currentDate);
   });
 }
+
+export function getUniqueActivities(items) {
+  const activities = new Set();
+
+  items.forEach((item) => {
+    activities.add(item.activity);
+  });
+
+  return Array.from(activities);
+}
