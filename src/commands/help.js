@@ -1,3 +1,5 @@
+import chalk from "chalk";
+
 export function showHelp() {
   const helpData = [
     {
@@ -24,7 +26,8 @@ export function showHelp() {
     { Command: "help", Description: "Show available commands" },
     { Command: "exit", Description: "Exit the application" },
   ];
-
-  console.log("\n\nAvailable commands:");
+  console.log(chalk.magenta("- - - - - - - - - - - - - - - - - - - -"));
+  console.log("Available commands:");
   console.table(helpData);
+  console.log(chalk.magenta("- - - - - - - - - - - - - - - - - - - -"));
 }

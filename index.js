@@ -1,4 +1,5 @@
 import readline from "readline";
+import chalk from "chalk";
 import {
   createItem,
   readItems,
@@ -56,7 +57,10 @@ rl.on("line", (input) => {
   processCommand(command, args);
 });
 
+console.log(chalk.cyan("- - - - - - - - - - - - - - - - - - - -"));
+console.log(chalk.yellow.bold("Welcome to the CLI-Mood!"));
 console.log(
-  'Welcome to the CRUD CLI app! Enter a command (e.g., create, read, update, delete) or type "help" for available commands.'
+  chalk.magenta('\nEnter a command or type "help" for available commands.\n')
 );
+console.log(chalk.cyan("- - - - - - - - - - - - - - - - - - - -"));
 rl.prompt();

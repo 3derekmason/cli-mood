@@ -1,4 +1,5 @@
 import { saveItems, items, loadItems } from "../database.js";
+import chalk from "chalk";
 
 export function createItem(value, desc, activity) {
   loadItems();
@@ -13,5 +14,7 @@ export function createItem(value, desc, activity) {
   items.push(newItem);
   saveItems();
 
-  console.log("\n\nItem created successfully.");
+  console.log(chalk.green("- - - - - - - - - - - - - - - - - - - -"));
+  console.log("Item created successfully.");
+  console.log(chalk.green("- - - - - - - - - - - - - - - - - - - -"));
 }
