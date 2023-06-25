@@ -13,8 +13,10 @@ export function createItem(value, desc, activity) {
 
   items.push(newItem);
   saveItems();
+  newItem.created_at = new Date().toLocaleString();
 
   console.log(chalk.green("- - - - - - - - - - - - - - - - - - - -"));
-  console.log("Item created successfully.");
+  console.log("Item created successfully.\n");
+  console.log(newItem);
   console.log(chalk.green("- - - - - - - - - - - - - - - - - - - -"));
 }
