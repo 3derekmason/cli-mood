@@ -26,7 +26,9 @@ After cloning this repo into a local directory, simply:
    npm i
    ```
 
-2. and start CLI-Mood
+2. Create your own `data.json` file in the root of the project, _(this file is ignored by git)_
+
+3. and start CLI-Mood
 
    ```bash
    npm start
