@@ -6,8 +6,20 @@ export function readItems(range = "") {
   loadItems();
 
   let itemsToDisplay = items;
-
   if (range) {
+    if (range === "last") {
+      const lastAdded = itemsToDisplay[itemsToDisplay.length - 1];
+      const lastEntry = {
+        value: lastAdded.value,
+        desc: lastAdded.desc,
+        activity: lastAdded.activity,
+        created_at: new Date(lastAdded.created_at).toLocaleString(),
+      };
+      console.log(chalk.yellow("- - - - - - - - - - - - - - - - - - - -"));
+      console.table(lastEntry);
+      console.log(chalk.yellow("- - - - - - - - - - - - - - - - - - - -"));
+      return;
+    }
     itemsToDisplay = filterItemsByTimeRange(range);
   }
 
