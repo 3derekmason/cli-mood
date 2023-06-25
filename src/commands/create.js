@@ -2,6 +2,10 @@ import { saveItems, items, loadItems } from "../database.js";
 import chalk from "chalk";
 
 export function createItem(value, desc, activity) {
+  if (value > 10 || value < 0 || typeof value != "number") {
+    console.log(chalk.red("\n Value must be a number between 1 - 10\n"));
+    return;
+  }
   loadItems();
 
   const newItem = {
