@@ -1,20 +1,18 @@
-import { items, loadItems } from "../database.js";
+import { filterItemsByTimeRange, calculateAverageValue } from "../utils.js";
+import { items } from "../database.js";
 import chalk from "chalk";
 
-export function calculateAverage() {
-  loadItems();
+export function calculateAverage(range) {
+  let filteredItems = items;
 
-  if (items.length === 0) {
-    console.log(chalk.red("- - - - - - - - - - - - - - - - - - - -"));
-    console.log("No items found.");
-    console.log(chalk.red("- - - - - - - - - - - - - - - - - - - -"));
-  } else {
-    const totalValue = items.reduce((sum, item) => sum + item.value, 0);
-    const average = totalValue / items.length;
-
-    console.log(chalk.blue("- - - - - - - - - - - - - - - - - - - -"));
-    console.log("Average:");
-    console.table([average.toFixed(2)]);
-    console.log(chalk.blue("- - - - - - - - - - - - - - - - - - - -"));
+  if (range) {
+    filteredItems = filterItemsByTimeRange(range);
   }
+
+  const average = calculateAverageValue(filteredItems);
+
+  console.log(chalk.blue("- - - - - - - - - - - - - - - - - - - -"));
+  console.log(`Average for ${range ? `(${range})` : "(all time)"}:`);
+  console.log(chalk.bold(`\n     ${average.toFixed(2)}`));
+  console.log(chalk.blue("- - - - - - - - - - - - - - - - - - - -"));
 }

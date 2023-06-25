@@ -1,6 +1,15 @@
 import moment from "moment";
 import { items } from "./database.js";
 
+export function calculateAverageValue(items) {
+  if (items.length === 0) {
+    return 0;
+  }
+
+  const total = items.reduce((sum, item) => sum + item.value, 0);
+  return total / items.length;
+}
+
 export function filterItemsByTimeRange(range) {
   const currentDate = moment();
   let startDate;

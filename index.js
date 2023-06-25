@@ -17,7 +17,7 @@ const rl = readline.createInterface({
 
 function processCommand(command, args) {
   switch (command) {
-    case "create":
+    case "add":
       const [value, desc, activity] = args;
       createItem(Number(value), desc, activity);
       break;
@@ -29,7 +29,11 @@ function processCommand(command, args) {
       actCommand(...args);
       break;
     case "avg":
-      calculateAverage();
+      if (args[0] === "wk" || args[0] === "mo" || args[0] === "day") {
+        calculateAverage(args[0]);
+      } else {
+        calculateAverage();
+      }
       break;
     case "update":
       const [index, newValue, newDesc, newActivity] = args;
