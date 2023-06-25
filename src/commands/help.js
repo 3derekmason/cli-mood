@@ -3,11 +3,11 @@ import chalk from "chalk";
 export function showHelp() {
   const helpData = [
     {
-      Command: "create <value> <desc> <activity>",
+      Command: "add <value> <desc> <activity>",
       Description: "Create a new item",
     },
     {
-      Command: "read [<range>]",
+      Command: "read <range>",
       Description: "Read items. Keys: wk (week), mo (month), day (day)",
     },
     {
@@ -18,7 +18,10 @@ export function showHelp() {
       Command: "delete <index>",
       Description: "Delete an item at index",
     },
-    { Command: "avg", Description: "Calculate the average value of all items" },
+    {
+      Command: "avg/n <range>",
+      Description: "Calculate average. Keys: wk (week), mo (month), day (day)",
+    },
     {
       Command: "act <activity>",
       Description: "Read items for a specific activity",
