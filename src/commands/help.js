@@ -19,7 +19,7 @@ export function showHelp() {
       Description: "Delete an item at index",
     },
     {
-      Command: "avg/n <range>",
+      Command: "avg <range>",
       Description: "Calculate average. Keys: wk (week), mo (month), day (day)",
     },
     {
