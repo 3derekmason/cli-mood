@@ -42,7 +42,7 @@ After cloning this repo into a local directory, simply:
 
 - **`read`** `<range>`
 
-  - Read entries. Range options: wk (week), mo (month), day (day). _If no range is given, returns all entries._
+  - Read entries. Range options: wk (week), mo (month), day (day), last (most recent). _If no range is given, returns all entries._
 
 - **`update`** `<index> <value> <desc> <activity>`
 
@@ -58,7 +58,7 @@ After cloning this repo into a local directory, simply:
 
 - **`act`** `<activity>`
 
-  - Show entries for a specific activity or list all unique activities if no argument is provided.
+  - Show entries and average for a specific activity or list all activities if no argument is provided.
 
 - **`help`**
 
