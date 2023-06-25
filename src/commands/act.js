@@ -1,4 +1,4 @@
-import { getUniqueActivities } from "../utils.js";
+import { calculateAverageValue, getUniqueActivities } from "../utils.js";
 import { items, loadItems } from "../database.js";
 import chalk from "chalk";
 
@@ -6,6 +6,7 @@ export function readItemsByActivity(activity) {
   loadItems();
 
   const itemsToDisplay = items.filter((item) => item.activity === activity);
+  const average = calculateAverageValue(itemsToDisplay);
 
   if (itemsToDisplay.length === 0) {
     console.log(chalk.red("- - - - - - - - - - - - - - - - - - - -"));
@@ -16,8 +17,12 @@ export function readItemsByActivity(activity) {
       ...item,
       created_at: new Date(item.created_at).toLocaleString(),
     }));
+
     console.log(chalk.yellow("- - - - - - - - - - - - - - - - - - - -"));
     console.table(formattedItems, ["value", "desc", "activity", "created_at"]);
+    console.log(
+      chalk.bold(`\n Average for this activity: ${average.toFixed(2)}`)
+    );
     console.log(chalk.yellow("- - - - - - - - - - - - - - - - - - - -"));
   }
 }
