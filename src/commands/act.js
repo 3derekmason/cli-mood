@@ -20,9 +20,22 @@ export function readItemsByActivity(activity) {
 
     console.log(chalk.yellow("- - - - - - - - - - - - - - - - - - - -"));
     console.table(formattedItems, ["value", "desc", "activity", "created_at"]);
-    console.log(
-      chalk.bold(`\n Average for this activity: ${average.toFixed(2)}`)
-    );
+    console.log(chalk.bold(`\n Average for this activity:`));
+    if (average >= 0 && average < 2) {
+      console.log(chalk.hex("#ef4444").bold(`\n     ${average.toFixed(2)}`));
+    }
+    if (average >= 2 && average < 4) {
+      console.log(chalk.hex("#f97316").bold(`\n     ${average.toFixed(2)}`));
+    }
+    if (average >= 4 && average < 6) {
+      console.log(chalk.hex("#eab308").bold(`\n     ${average.toFixed(2)}`));
+    }
+    if (average >= 6 && average < 8) {
+      console.log(chalk.hex("#84cc16").bold(`\n     ${average.toFixed(2)}`));
+    }
+    if (average >= 8) {
+      console.log(chalk.hex("#22c55e").bold(`\n     ${average.toFixed(2)}`));
+    }
     console.log(chalk.yellow("- - - - - - - - - - - - - - - - - - - -"));
   }
 }
