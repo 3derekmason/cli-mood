@@ -8,9 +8,15 @@ export function createItem(value, desc, activity) {
   }
   loadItems();
 
+  let description = desc;
+
+  if (description.includes("_")) {
+    description = description.split("_").join(" ");
+  }
+
   const newItem = {
     value: Number(value),
-    desc,
+    desc: description,
     activity,
     created_at: new Date().toISOString(),
   };

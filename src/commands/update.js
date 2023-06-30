@@ -11,9 +11,15 @@ export function updateItem(index, newValue, newDesc, newActivity) {
     return;
   }
 
+  let newDescription = newDesc;
+
+  if (newDescription.includes("_")) {
+    newDescription = newDescription.split("_").join(" ");
+  }
+
   const item = items[index];
   item.value = Number(newValue);
-  item.desc = newDesc;
+  item.desc = newDescription;
   item.activity = newActivity;
   saveItems();
 
