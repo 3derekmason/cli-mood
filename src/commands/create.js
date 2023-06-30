@@ -17,7 +17,7 @@ export function createItem(value, desc, activity) {
   const newItem = {
     value: Number(value),
     desc: description,
-    activity,
+    activity: activity || "-",
     created_at: new Date().toISOString(),
   };
 

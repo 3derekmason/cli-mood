@@ -19,8 +19,8 @@ export function updateItem(index, newValue, newDesc, newActivity) {
 
   const item = items[index];
   item.value = Number(newValue);
-  item.desc = newDescription;
-  item.activity = newActivity;
+  item.desc = newDescription || item.desc;
+  item.activity = newActivity || item.activity;
   saveItems();
 
   console.log(chalk.green("- - - - - - - - - - - - - - - - - - - -"));
